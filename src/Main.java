@@ -1,5 +1,7 @@
 import home.SmartHomeSystem;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -9,9 +11,13 @@ public class Main {
         int q = scanner.nextInt();
         scanner.nextLine();
 
+
+        List<String> outputs = new ArrayList<>();
+
         for (int i = 0; i < q; i++) {
             String command = scanner.nextLine().trim();
-            if (command.isEmpty()) continue;
+            if (command.isEmpty())
+                continue;
 
             String[] parts = command.split(" ");
             String response = "";
@@ -47,13 +53,25 @@ public class Main {
                     default:
                         response = "invalid command";
                 }
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 response = "invalid input";
             }
 
-            System.out.println(response);
+            outputs.add(response);
         }
 
         scanner.close();
+
+        for (String output : outputs) {
+            if (output.contains("\n")) {
+
+                System.out.println(output);
+            }
+            else {
+                System.out.println(output);
+            }
+        }
     }
     }
+
